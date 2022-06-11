@@ -8,6 +8,7 @@ namespace BLL.Interfaces.Services
 {
     public interface ICurrencyService
     {
-        Task<IEnumerable<Market>> CryptingUpRequest();
+        Task<IEnumerable<Market>> GetMarkets();
+        Task<IEnumerable<Asset>> GetAssets();
     }
 }

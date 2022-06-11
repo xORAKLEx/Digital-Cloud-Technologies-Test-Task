@@ -1,0 +1,58 @@
+﻿<Window x:Class="UI.View.AssetView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI.View"
+        mc:Ignorable="d"
+        Title="AssetView" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition MinWidth="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DataGrid RowHeight="30" ItemsSource="{Binding Markets}" Margin="0 10 0 0" CanUserAddRows="False"  AutoGenerateColumns="False"
+                  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn MinWidth="100" Binding="{Binding Base_asset}" Header="Name" />
+                <DataGridTextColumn MinWidth="60" Binding="{Binding Symbol}" Header="Symbol"/>
+                <DataGridTextColumn MinWidth="60" Binding="{Binding Volume_24h}" Header="Volume"/>
+                <DataGridTextColumn MinWidth="60" Binding="{Binding Change_24h}" Header="Price Change"/>
+                <DataGridTextColumn MinWidth="100" Binding="{Binding Exchange_id}" Header="Market"/>
+                <DataGridTextColumn MinWidth="150" Binding="{Binding Price_unconverted}" Header="Price in Market"/>
+                <DataGridTemplateColumn MinWidth="60">
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="1" Margin="10"
+                  CanUserAddRows="False"  AutoGenerateColumns="False"
+                  RowHeight="30" ItemsSource="{Binding Assets}">
+            <DataGrid.Columns>
+                <DataGridTextColumn MinWidth="100" Binding="{Binding Base_asset}" Header="Name" />
+                <DataGridTemplateColumn 
+                    MinWidth="145"  >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Command="{Binding DetailsCommand}" Width="60" Height="30" Content="Details">
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+       
+
+
+        <Button Grid.Column="3" Grid.Row="3" Height="30"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Content="Markets" Command="{Binding MoveToAssetsCommand}" Margin="10">
+        </Button>
+    </Grid>
+</Window>

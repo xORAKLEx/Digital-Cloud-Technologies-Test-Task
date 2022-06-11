@@ -13,7 +13,29 @@ namespace BLL.Core.Services
 {
     public class CurrencyService : ICurrencyService
     {
-        public async Task<IEnumerable<Market>> CryptingUpRequest()
+        public async Task<IEnumerable<Asset>> GetAssets()
+        {
+
+            var client = new HttpClient();
+
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync("https://www.cryptingup.com/api/markets");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                var res = JsonConvert.DeserializeObject<AssetList>(responseBody);
+
+                return res.Assets;
+            }
+            catch (HttpRequestException e)
+            {
+                return null;
+            }
+            return null;
+        }
+
+        public async Task<IEnumerable<Market>> GetMarkets()
         {
 
             var client = new HttpClient();
@@ -34,6 +56,7 @@ namespace BLL.Core.Services
             }
             return null;
         }
+
 
     }
 

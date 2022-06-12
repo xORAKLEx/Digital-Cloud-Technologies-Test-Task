@@ -7,22 +7,38 @@ namespace BLL.Interfaces.Models
     interface IAssets
     {
         string Asset_id { get; }
+
         string Name { get; }
         string Description { get; }
+
         string Website { get; }
-        decimal Ethereum_contract_address { get; }
+
+        string Ethereum_contract_address { get; }
+
         decimal Price { get; }
+
         decimal Volume_24h { get; }
+
         decimal Change_1h { get; }
+
         decimal Change_24h { get; }
+
         decimal Change_7d { get; }
-        string Total_supply { get; }
-        string Circulating_supply { get; }
-        string Max_supply { get; }
-        string Market_cap { get; }
-        string Fully_diluted_market_cap { get; }
+
+        decimal Total_supply { get; }
+
+        decimal Circulating_supply { get; }
+
+        decimal Max_supply { get; }
+
+        decimal Market_cap { get; }
+
+        decimal Fully_diluted_market_cap { get; }
+
         string Status { get; }
+
         string Created_at { get; }
+
         string Updated_at { get; }
     }
 }

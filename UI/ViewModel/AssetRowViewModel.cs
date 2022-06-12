@@ -8,9 +8,9 @@ namespace UI.ViewModel
 {
     public class AssetRowViewModel
     {
-        public AssetRowViewModel(Action<string> detailsCommand, string base_asset)
+        public AssetRowViewModel(Action<string> detailsCommand, string base_asset, string asset_id)
         {
-            DetailsCommand = new RelayCommand(() => detailsCommand.Invoke(Base_asset));
+            DetailsCommand = new RelayCommand(() => detailsCommand.Invoke(asset_id));
             Base_asset = base_asset;
         }
 

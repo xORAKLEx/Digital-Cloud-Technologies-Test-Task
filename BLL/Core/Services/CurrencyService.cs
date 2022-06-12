@@ -20,7 +20,7 @@ namespace BLL.Core.Services
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync("https://www.cryptingup.com/api/markets");
+                HttpResponseMessage response = await client.GetAsync("https://www.cryptingup.com/api/assets");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 

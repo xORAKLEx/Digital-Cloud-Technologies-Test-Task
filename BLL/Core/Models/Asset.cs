@@ -14,7 +14,7 @@ namespace BLL.Core.Models
 
         public string Website { get; set; }
 
-        public decimal Ethereum_contract_address { get; set; }
+        public string Ethereum_contract_address { get; set; }
 
         public decimal Price { get; set; }
 
@@ -26,15 +26,15 @@ namespace BLL.Core.Models
 
         public decimal Change_7d { get; set; }
 
-        public string Total_supply { get; set; }
+        public decimal Total_supply { get; set; }
 
-        public string Circulating_supply { get; set; }
+        public decimal Circulating_supply { get; set; }
 
-        public string Max_supply { get; set; }
+        public decimal Max_supply { get; set; }
 
-        public string Market_cap { get; set; }
+        public decimal Market_cap { get; set; }
 
-        public string Fully_diluted_market_cap { get; set; }
+        public decimal Fully_diluted_market_cap { get; set; }
 
         public string Status { get; set; }
 

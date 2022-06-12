@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UI.View"
         mc:Ignorable="d"
-        Title="AssetView" Height="450" Width="800">
+        Title="AssetView" Height="450" Width="800"
+        Background ="{Binding BackgroundColor}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,23 +19,25 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <DataGrid RowHeight="30" ItemsSource="{Binding Markets}" Margin="0 10 0 0" CanUserAddRows="False"  AutoGenerateColumns="False"
-                  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <DataGrid RowHeight="30" ItemsSource="{Binding Markets}" Margin="0 10 0 0" CanUserAddRows="False"  AutoGenerateColumns="False" IsReadOnly="True"
+                  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Background = "{Binding DataGridBackground}">
+
             <DataGrid.Columns>
+                <DataGridTextColumn MinWidth="100" Binding="{Binding Exchange_id}" Header="Market"/>
                 <DataGridTextColumn MinWidth="100" Binding="{Binding Base_asset}" Header="Name" />
+                <DataGridTextColumn MinWidth="150" Binding="{Binding Price_unconverted}" Header="Price in Market"/>
                 <DataGridTextColumn MinWidth="60" Binding="{Binding Symbol}" Header="Symbol"/>
                 <DataGridTextColumn MinWidth="60" Binding="{Binding Volume_24h}" Header="Volume"/>
                 <DataGridTextColumn MinWidth="60" Binding="{Binding Change_24h}" Header="Price Change"/>
-                <DataGridTextColumn MinWidth="100" Binding="{Binding Exchange_id}" Header="Market"/>
-                <DataGridTextColumn MinWidth="150" Binding="{Binding Price_unconverted}" Header="Price in Market"/>
                 <DataGridTemplateColumn MinWidth="60">
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
+
         <DataGrid Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="1" Margin="10"
-                  CanUserAddRows="False"  AutoGenerateColumns="False"
-                  RowHeight="30" ItemsSource="{Binding Assets}">
+                  CanUserAddRows="False"  AutoGenerateColumns="False" IsReadOnly="True"
+                  RowHeight="30" ItemsSource="{Binding Assets}" Background = "{Binding DataGridBackground}">
             <DataGrid.Columns>
                 <DataGridTextColumn MinWidth="100" Binding="{Binding Base_asset}" Header="Name" />
                 <DataGridTemplateColumn 
@@ -49,10 +52,13 @@
             </DataGrid.Columns>
             
         </DataGrid>
-       
 
 
-        <Button Grid.Column="3" Grid.Row="3" Height="30"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Content="Markets" Command="{Binding MoveToAssetsCommand}" Margin="10">
+
+        <Button Grid.Column="3" Grid.Row="3" Height="30"  HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="60" Content="Markets" Command="{Binding MoveToMarketsCommand}" Margin="10">
         </Button>
+        <Button Grid.Column="0" Grid.Row="3" Height="30" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Margin="10" Content="Theme" Command="{Binding ChangeBackgroundColorCommand}">
+        </Button >
     </Grid>
 </Window>
